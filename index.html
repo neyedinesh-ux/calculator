@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Free Calculators – EMI, Age, BMI, Land Area</title>
+<meta name="description" content="Free EMI, loan, savings, percentage, age, BMI and land area (decimal, katha, bigha) calculators. Simple and fast.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --bg:#f4f1ea;--surface:#fffdf8;--ink:#1d2a33;--muted:#62707a;--line:#e0dacd;--accent:#0f6b6b;--accent-ink:#ffffff;--chip:#ebe6d9;--result:#e3f0ee;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#12191c;--surface:#1a2428;--ink:#e8eef0;--muted:#9bacb3;--line:#2b383d;--accent:#4fc1bd;--accent-ink:#062524;--chip:#24323a;--result:#1d3535}
+}
+:root[data-theme="dark"]{--bg:#12191c;--surface:#1a2428;--ink:#e8eef0;--muted:#9bacb3;--line:#2b383d;--accent:#4fc1bd;--accent-ink:#062524;--chip:#24323a;--result:#1d3535}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5}
+.wrap{max-width:560px;margin:0 auto;padding:0 16px 48px}
+header{padding:20px 0 6px}
+h1{font-size:27px;margin:0;font-weight:700}
+.sub{color:var(--muted);font-size:14px}
+.tabs{display:flex;gap:8px;margin:16px 0;overflow-x:auto;padding-bottom:4px}
+.tab{border:0;background:var(--chip);color:var(--ink);font:inherit;font-size:15px;padding:9px 16px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.tab[aria-selected="true"]{background:var(--accent);color:var(--accent-ink);font-weight:600}
+.tab:focus-visible,input:focus-visible,select:focus-visible,button.go:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px}
+.panel[hidden]{display:none}
+h2{font-size:19px;margin:0 0 14px}
+label{display:block;font-size:14px;color:var(--muted);margin:12px 0 4px}
+input,select{width:100%;font:inherit;font-size:17px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+button.go{margin-top:16px;width:100%;border:0;background:var(--accent);color:var(--accent-ink);font:inherit;font-size:17px;font-weight:600;padding:12px;border-radius:10px;cursor:pointer}
+.res{margin-top:16px;background:var(--result);border-radius:12px;padding:14px 16px}
+.res:empty{display:none}
+.big{font-size:30px;font-weight:700;line-height:1.2}
+.line{display:flex;justify-content:space-between;gap:10px;padding:5px 0;font-size:16px;border-top:1px solid var(--line)}
+.line:first-child{border-top:0}
+.line b{font-variant-numeric:tabular-nums;text-align:right}
+.note{font-size:13px;color:var(--muted);margin-top:10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.chip{border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;font-size:14px;padding:6px 12px;border-radius:999px;cursor:pointer}
+.chip:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.tw{overflow-x:auto;margin-top:12px}
+.sch{max-height:340px;overflow-y:auto}
+table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{padding:7px 8px;text-align:right;border-top:1px solid var(--line);white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+th{font-weight:600;color:var(--muted)}
+.sep{height:1px;background:var(--line);margin:20px 0 4px}
+h3{font-size:16px;margin:18px 0 0}
+.err{color:#c0392b;font-size:14px;margin-top:10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><h1>Free Calculators</h1><div class="sub">EMI, loan, savings, percentage, age, BMI and land area</div></header>
+
+<div class="tabs" role="tablist" id="tabs">
+  <button class="tab" role="tab" data-t="emi" aria-selected="true">EMI</button>
+  <button class="tab" role="tab" data-t="age" aria-selected="false">Age</button>
+  <button class="tab" role="tab" data-t="bmi" aria-selected="false">BMI</button>
+  <button class="tab" role="tab" data-t="land" aria-selected="false">Land area</button>
+  <button class="tab" role="tab" data-t="loan" aria-selected="false">Loan amount</button>
+  <button class="tab" role="tab" data-t="save" aria-selected="false">Savings</button>
+  <button class="tab" role="tab" data-t="pct" aria-selected="false">Percentage</button>
+</div>
+
+<section class="panel" id="emi">
+  <h2>Loan EMI calculator</h2>
+  <label for="e1">Loan amount</label><input id="e1" type="number" inputmode="decimal" value="500000">
+  <label for="e2">Annual interest rate (%)</label><input id="e2" type="number" inputmode="decimal" value="10">
+  <label for="e3">Term</label>
+  <div class="two"><input id="e3" type="number" inputmode="decimal" value="3"><select id="e4" aria-label="Term unit"><option value="m">Months</option><option value="y" selected>Years</option></select></div>
+  <div class="chips"><button type="button" class="chip" data-i="e3" data-u="e4" data-v="3" data-x="m" data-b="b-emi">3 months</button><button type="button" class="chip" data-i="e3" data-u="e4" data-v="6" data-x="m" data-b="b-emi">6 months</button><button type="button" class="chip" data-i="e3" data-u="e4" data-v="1" data-x="y" data-b="b-emi">1 year</button><button type="button" class="chip" data-i="e3" data-u="e4" data-v="2" data-x="y" data-b="b-emi">2 years</button><button type="button" class="chip" data-i="e3" data-u="e4" data-v="3" data-x="y" data-b="b-emi">3 years</button><button type="button" class="chip" data-i="e3" data-u="e4" data-v="5" data-x="y" data-b="b-emi">5 years</button><button type="button" class="chip" data-i="e3" data-u="e4" data-v="10" data-x="y" data-b="b-emi">10 years</button><button type="button" class="chip" data-i="e3" data-u="e4" data-v="20" data-x="y" data-b="b-emi">20 years</button></div>
+  <button class="go" id="b-emi">Calculate</button>
+  <div class="res" id="r-emi" aria-live="polite"></div>
+  <div id="c-emi"></div>
+  <div class="note">Reducing-balance method. Choose any term from 1 month to 40 years. Fees and rules vary by lender.</div>
+</section>
+
+<section class="panel" id="loan" hidden>
+  <h2>How much loan can I afford?</h2>
+  <label for="n1">Monthly payment you can afford</label><input id="n1" type="number" inputmode="decimal" value="20000">
+  <label for="n2">Annual interest rate (%)</label><input id="n2" type="number" inputmode="decimal" value="10">
+  <label for="n3">Term</label>
+  <div class="two"><input id="n3" type="number" inputmode="decimal" value="3"><select id="n4" aria-label="Term unit"><option value="m">Months</option><option value="y" selected>Years</option></select></div>
+  <div class="chips"><button type="button" class="chip" data-i="n3" data-u="n4" data-v="3" data-x="m" data-b="b-loan">3 months</button><button type="button" class="chip" data-i="n3" data-u="n4" data-v="6" data-x="m" data-b="b-loan">6 months</button><button type="button" class="chip" data-i="n3" data-u="n4" data-v="1" data-x="y" data-b="b-loan">1 year</button><button type="button" class="chip" data-i="n3" data-u="n4" data-v="2" data-x="y" data-b="b-loan">2 years</button><button type="button" class="chip" data-i="n3" data-u="n4" data-v="3" data-x="y" data-b="b-loan">3 years</button><button type="button" class="chip" data-i="n3" data-u="n4" data-v="5" data-x="y" data-b="b-loan">5 years</button><button type="button" class="chip" data-i="n3" data-u="n4" data-v="10" data-x="y" data-b="b-loan">10 years</button><button type="button" class="chip" data-i="n3" data-u="n4" data-v="20" data-x="y" data-b="b-loan">20 years</button></div>
+  <button class="go" id="b-loan">Calculate</button>
+  <div class="res" id="r-loan" aria-live="polite"></div>
+</section>
+
+<section class="panel" id="save" hidden>
+  <h2>Savings and deposit interest</h2>
+  <label for="s1">Deposit amount</label><input id="s1" type="number" inputmode="decimal" value="100000">
+  <label for="s2">Annual interest rate (%)</label><input id="s2" type="number" inputmode="decimal" value="7">
+  <label for="s3">Term</label>
+  <div class="two"><input id="s3" type="number" inputmode="decimal" value="1"><select id="s4" aria-label="Term unit"><option value="m">Months</option><option value="y" selected>Years</option></select></div>
+  <div class="chips"><button type="button" class="chip" data-i="s3" data-u="s4" data-v="3" data-x="m" data-b="b-save">3 months</button><button type="button" class="chip" data-i="s3" data-u="s4" data-v="6" data-x="m" data-b="b-save">6 months</button><button type="button" class="chip" data-i="s3" data-u="s4" data-v="1" data-x="y" data-b="b-save">1 year</button><button type="button" class="chip" data-i="s3" data-u="s4" data-v="2" data-x="y" data-b="b-save">2 years</button><button type="button" class="chip" data-i="s3" data-u="s4" data-v="3" data-x="y" data-b="b-save">3 years</button><button type="button" class="chip" data-i="s3" data-u="s4" data-v="5" data-x="y" data-b="b-save">5 years</button><button type="button" class="chip" data-i="s3" data-u="s4" data-v="10" data-x="y" data-b="b-save">10 years</button><button type="button" class="chip" data-i="s3" data-u="s4" data-v="20" data-x="y" data-b="b-save">20 years</button></div>
+  <label for="s5">Interest type</label>
+  <select id="s5"><option value="12">Compounded monthly</option><option value="4">Compounded quarterly</option><option value="2">Compounded half-yearly</option><option value="1">Compounded yearly</option><option value="0">Simple interest</option></select>
+  <button class="go" id="b-save">Calculate</button>
+  <div class="res" id="r-save" aria-live="polite"></div>
+</section>
+
+<section class="panel" id="pct" hidden>
+  <h2>Percentage calculator</h2>
+  <h3>What is X% of Y?</h3>
+  <div class="two"><div><label for="p1">X (%)</label><input id="p1" type="number" inputmode="decimal" value="15"></div><div><label for="p2">Y</label><input id="p2" type="number" inputmode="decimal" value="2000"></div></div>
+  <div class="res" id="r-p1" aria-live="polite"></div>
+  <div class="sep"></div>
+  <h3>X is what percent of Y?</h3>
+  <div class="two"><div><label for="p3">X</label><input id="p3" type="number" inputmode="decimal" value="30"></div><div><label for="p4">Y</label><input id="p4" type="number" inputmode="decimal" value="120"></div></div>
+  <div class="res" id="r-p2" aria-live="polite"></div>
+  <div class="sep"></div>
+  <h3>Percentage change</h3>
+  <div class="two"><div><label for="p5">From</label><input id="p5" type="number" inputmode="decimal" value="80"></div><div><label for="p6">To</label><input id="p6" type="number" inputmode="decimal" value="100"></div></div>
+  <div class="res" id="r-p3" aria-live="polite"></div>
+</section>
+
+<section class="panel" id="age" hidden>
+  <h2>Age calculator</h2>
+  <label for="a1">Date of birth</label><input id="a1" type="date">
+  <button class="go" id="b-age">Calculate age</button>
+  <div class="res" id="r-age" aria-live="polite"></div>
+</section>
+
+<section class="panel" id="bmi" hidden>
+  <h2>BMI (body mass index)</h2>
+  <div class="two">
+    <div><label for="m1">Weight (kg)</label><input id="m1" type="number" inputmode="decimal" value="65"></div>
+    <div><label for="m2">Height (cm)</label><input id="m2" type="number" inputmode="decimal" value="165"></div>
+  </div>
+  <button class="go" id="b-bmi">Calculate</button>
+  <div class="res" id="r-bmi" aria-live="polite"></div>
+  <div class="note">A general guide for adults. Consult a doctor before making health decisions.</div>
+</section>
+
+<section class="panel" id="land" hidden>
+  <h2>Land area converter</h2>
+  <div class="two">
+    <div><label for="l1">Amount</label><input id="l1" type="number" inputmode="decimal" value="1"></div>
+    <div><label for="l2">Unit</label>
+      <select id="l2">
+        <option value="720">Katha</option><option value="435.6">Decimal (shatak)</option><option value="14400">Bigha</option>
+        <option value="43560">Acre</option><option value="1">Square feet</option><option value="10.7639">Square metres</option>
+      </select></div>
+  </div>
+  <button class="go" id="b-land">Convert</button>
+  <div class="res" id="r-land" aria-live="polite"></div>
+  <div class="note">Assumes 1 katha = 720 sq ft, 1 bigha = 20 katha, 1 decimal = 435.6 sq ft. Katha and bigha sizes vary by region, so check the size stated in your land deed.</div>
+</section>
+</div>
+
+<script>
+var $=function(i){return document.getElementById(i)};
+function bn(s){return String(s)}
+function f(n,d){return bn(Number(n).toLocaleString("en-US",{maximumFractionDigits:d==null?0:d}))}
+function row(a,b){return '<div class="line"><span>'+a+'</span><b>'+b+'</b></div>'}
+
+var T=["emi","age","bmi","land","loan","save","pct"];
+var tabs=document.querySelectorAll(".tab");
+function show(t){
+  [].forEach.call(tabs,function(b){b.setAttribute("aria-selected",b.dataset.t===t?"true":"false")});
+  T.forEach(function(k){$(k).hidden=(k!==t)});
+  try{history.replaceState(null,"","#"+t)}catch(e){}
+}
+$("tabs").addEventListener("click",function(e){var b=e.target.closest(".tab");if(b)show(b.dataset.t)});
+var h=(location.hash||"").slice(1);if(T.indexOf(h)>-1)show(h);
+
+function pmt(P,r,n){return r===0?P/n:P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1)}
+function months(v,u){var x=parseFloat($(v).value),k=$(u).value;return Math.round(k==="y"?x*12:x)}
+function termOk(n){return n>=1&&n<=480}
+document.addEventListener("click",function(e){
+  var c=e.target.closest(".chip");if(!c||!c.dataset.i)return;
+  $(c.dataset.i).value=c.dataset.v;$(c.dataset.u).value=c.dataset.x;$(c.dataset.b).click();
+});
+
+$("b-emi").onclick=function(){
+  var P=parseFloat($("e1").value),R=parseFloat($("e2").value),r=R/1200,n=months("e3","e4"),o=$("r-emi"),t=$("c-emi");
+  if(!(P>0)||!(R>=0)||!termOk(n)){o.innerHTML='<div class="err">Enter a valid amount and rate, and a term from 1 month to 40 years.</div>';t.innerHTML="";return}
+  var emi=pmt(P,r,n),tot=emi*n;
+  o.innerHTML='<div class="big">'+f(emi)+' per month</div>'+row("Loan amount",f(P))+row("Extra you pay (interest)",f(tot-P)+" ("+f((tot-P)/P*100,1)+"% of loan)")+row("Total amount you pay",f(tot))+row("Term",f(n)+" months ("+f(n/12,1)+" years)");
+  var h='<h3>Compare terms</h3><div class="tw"><table><tr><th>Term</th><th>EMI</th><th>Interest</th><th>Total</th></tr>';
+  [[3,"3 months"],[6,"6 months"],[12,"1 year"],[24,"2 years"],[36,"3 years"],[60,"5 years"],[120,"10 years"],[240,"20 years"]].forEach(function(x){
+    var m=pmt(P,r,x[0]);h+='<tr><td>'+x[1]+'</td><td>'+f(m)+'</td><td>'+f(m*x[0]-P)+'</td><td>'+f(m*x[0])+'</td></tr>';
+  });
+  t.innerHTML=h+'</table></div><h3>Payment schedule</h3><div class="chips"><button type="button" class="chip" id="sv-m">By month</button><button type="button" class="chip" id="sv-y">By year</button></div><div class="tw sch" id="sch"></div>';
+  var bal=P,M=[],Y=[];
+  for(var i=1;i<=n;i++){var it=bal*r,pr=emi-it;bal=Math.max(bal-pr,0);M.push([i,emi,pr,it,bal]);var yi=Math.ceil(i/12)-1;if(!Y[yi])Y[yi]=[yi+1,0,0,0,0];Y[yi][1]+=emi;Y[yi][2]+=pr;Y[yi][3]+=it;Y[yi][4]=bal}
+  function draw(v){var d=v==="m"?M:Y,x='<table><tr><th>'+(v==="m"?"Month":"Year")+'</th><th>Payment</th><th>Principal</th><th>Interest</th><th>Balance</th></tr>';
+    d.forEach(function(q){x+='<tr><td>'+f(q[0])+'</td><td>'+f(q[1])+'</td><td>'+f(q[2])+'</td><td>'+f(q[3])+'</td><td>'+f(q[4])+'</td></tr>'});
+    $("sch").innerHTML=x+'</table>'}
+  $("sv-m").onclick=function(){draw("m")};$("sv-y").onclick=function(){draw("y")};
+  draw(n>24?"y":"m");
+};
+
+$("b-loan").onclick=function(){
+  var M=parseFloat($("n1").value),R=parseFloat($("n2").value),r=R/1200,n=months("n3","n4"),o=$("r-loan");
+  if(!(M>0)||!(R>=0)||!termOk(n)){o.innerHTML='<div class="err">Enter a valid payment and rate, and a term from 1 month to 40 years.</div>';return}
+  var P=r===0?M*n:M*(1-Math.pow(1+r,-n))/r;
+  o.innerHTML='<div class="big">'+f(P)+'</div>'+row("You pay in total",f(M*n))+row("Total interest",f(M*n-P))+row("Number of instalments",f(n));
+};
+
+$("b-save").onclick=function(){
+  var P=parseFloat($("s1").value),R=parseFloat($("s2").value)/100,n=months("s3","s4"),k=parseInt($("s5").value,10),o=$("r-save");
+  if(!(P>0)||!(R>=0)||!termOk(n)){o.innerHTML='<div class="err">Enter a valid amount and rate, and a term from 1 month to 40 years.</div>';return}
+  var y=n/12,A=k===0?P*(1+R*y):P*Math.pow(1+R/k,k*y);
+  var h='<div class="big">'+f(A)+'</div>'+row("Interest earned",f(A-P))+row("Deposit",f(P));
+  if(k>0)h+=row("Effective yearly rate",f((Math.pow(1+R/k,k)-1)*100,2)+"%");
+  o.innerHTML=h;
+};
+
+function pc(){
+  var a=parseFloat($("p1").value),b=parseFloat($("p2").value);
+  $("r-p1").innerHTML=(isNaN(a)||isNaN(b))?"":'<div class="big">'+f(a*b/100,4)+'</div>';
+  a=parseFloat($("p3").value);b=parseFloat($("p4").value);
+  $("r-p2").innerHTML=(isNaN(a)||!b)?"":'<div class="big">'+f(a/b*100,4)+'%</div>';
+  a=parseFloat($("p5").value);b=parseFloat($("p6").value);
+  $("r-p3").innerHTML=(isNaN(a)||isNaN(b)||!a)?"":'<div class="big">'+(b>=a?"+":"")+f((b-a)/Math.abs(a)*100,4)+'%</div>'+row("Change",f(b-a,4));
+}
+["p1","p2","p3","p4","p5","p6"].forEach(function(i){$(i).addEventListener("input",pc)});
+pc();
+
+$("b-age").onclick=function(){
+  var v=$("a1").value,o=$("r-age");
+  if(!v){o.innerHTML='<div class="err">Pick a date of birth.</div>';return}
+  var b=new Date(v),t=new Date();t.setHours(0,0,0,0);
+  if(b>t){o.innerHTML='<div class="err">The date of birth must be before today.</div>';return}
+  var y=t.getFullYear()-b.getFullYear(),m=t.getMonth()-b.getMonth(),d=t.getDate()-b.getDate();
+  if(d<0){m--;d+=new Date(t.getFullYear(),t.getMonth(),0).getDate()}
+  if(m<0){y--;m+=12}
+  var nb=new Date(t.getFullYear(),b.getMonth(),b.getDate());if(nb<t)nb.setFullYear(t.getFullYear()+1);
+  var days=Math.round((t-b)/864e5),nd=Math.round((nb-t)/864e5);
+  o.innerHTML='<div class="big">'+f(y)+' years '+f(m)+' months '+f(d)+' days</div>'+row("Total days",f(days))+row("Next birthday",nd===0?"Today":"in "+f(nd)+" days");
+};
+
+$("b-bmi").onclick=function(){
+  var w=parseFloat($("m1").value),hc=parseFloat($("m2").value),o=$("r-bmi");
+  if(!(w>0)||!(hc>0)){o.innerHTML='<div class="err">Enter a valid weight and height.</div>';return}
+  var m=hc/100,b=w/(m*m),c=b<18.5?"Underweight":b<25?"Normal":b<30?"Overweight":"Obese";
+  var lo=18.5*m*m,hi=24.9*m*m;
+  o.innerHTML='<div class="big">'+f(b,1)+' ('+c+')</div>'+row("Normal weight range",f(lo,1)+" – "+f(hi,1)+" kg");
+};
+
+$("b-land").onclick=function(){
+  var q=parseFloat($("l1").value),u=parseFloat($("l2").value),o=$("r-land");
+  if(!(q>0)){o.innerHTML='<div class="err">Enter a valid amount.</div>';return}
+  var sf=q*u;
+  o.innerHTML=row("Square feet",f(sf,2))+row("Decimal",f(sf/435.6,3))+row("Katha",f(sf/720,3))+row("Bigha",f(sf/14400,4))+row("Acre",f(sf/43560,4))+row("Square metres",f(sf/10.7639,2));
+};
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Age Calculator: Exact Age in Years, Months and Days</title>
+<meta name="description" content="Free age calculator. Enter a date of birth to get your exact age in years, months and days, total days lived and days until your next birthday.">
+<link rel="canonical" href="https://neyedinesh-ux.github.io/calculator/age-calculator.html">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="style.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does it handle leap years?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Total days are counted from real calendar dates, so leap days are included."}}, {"@type": "Question", "name": "What if I was born on 29 February?", "acceptedAnswer": {"@type": "Answer", "text": "Your next birthday is counted from the calendar date in the following year, so in non-leap years it falls in March in this tool."}}, {"@type": "Question", "name": "Can I use it for official documents?", "acceptedAnswer": {"@type": "Answer", "text": "Use it as a quick reference. For legal or official age requirements, follow the rules of the office or authority involved."}}]}</script>
+</head><body><div class="wrap">
+<header><a class="brand" href="./">Free Calculators</a><nav><a href="./">Home</a><a href="emi-calculator.html">EMI</a><a href="age-calculator.html" aria-current="page">Age</a><a href="bmi-calculator.html">BMI</a><a href="land-area-converter.html">Land area</a><a href="loan-amount-calculator.html">Loan amount</a><a href="savings-interest-calculator.html">Savings</a><a href="percentage-calculator.html">Percentage</a></nav></header>
+<h1>Age Calculator</h1><p class="lead">Enter a date of birth to see the exact age today and the days left until the next birthday.</p><section class="panel" id="age">
+  
+  <label for="a1">Date of birth</label><input id="a1" type="date">
+  <button class="go" id="b-age">Calculate age</button>
+  <div class="res" id="r-age" aria-live="polite"></div>
+</section><article><h2>How age is calculated</h2>
+<p>The calculator counts full years from the date of birth, then the remaining full months, then the remaining days up to today. It also shows the total number of days lived and how many days remain until the next birthday.</p>
+<h2>Frequently asked questions</h2>
+<details><summary>Does it handle leap years?</summary><p>Yes. Total days are counted from real calendar dates, so leap days are included.</p></details>
+<details><summary>What if I was born on 29 February?</summary><p>Your next birthday is counted from the calendar date in the following year, so in non-leap years it falls in March in this tool.</p></details>
+<details><summary>Can I use it for official documents?</summary><p>Use it as a quick reference. For legal or official age requirements, follow the rules of the office or authority involved.</p></details></article>
+<footer>Results are estimates for general information. Check important figures with your bank, doctor or local authority.</footer>
+</div><script src="app.js"></script></body></html>

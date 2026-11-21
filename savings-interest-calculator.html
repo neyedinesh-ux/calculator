@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Savings Interest Calculator: Simple and Compound Interest on Deposits</title>
+<meta name="description" content="Free savings and deposit interest calculator. Compare simple interest with monthly, quarterly, half-yearly or yearly compounding over months or years.">
+<link rel="canonical" href="https://neyedinesh-ux.github.io/calculator/savings-interest-calculator.html">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="style.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is compound interest better than simple interest?", "acceptedAnswer": {"@type": "Answer", "text": "For the same rate and term, compounding gives a higher final amount because interest earns interest."}}, {"@type": "Question", "name": "Does it include tax or bank charges?", "acceptedAnswer": {"@type": "Answer", "text": "No. Tax and fees depend on your country and account, so check them with your bank."}}, {"@type": "Question", "name": "Does more frequent compounding matter?", "acceptedAnswer": {"@type": "Answer", "text": "Slightly. Monthly compounding gives a little more than yearly at the same rate."}}]}</script>
+</head><body><div class="wrap">
+<header><a class="brand" href="./">Free Calculators</a><nav><a href="./">Home</a><a href="emi-calculator.html">EMI</a><a href="age-calculator.html">Age</a><a href="bmi-calculator.html">BMI</a><a href="land-area-converter.html">Land area</a><a href="loan-amount-calculator.html">Loan amount</a><a href="savings-interest-calculator.html" aria-current="page">Savings</a><a href="percentage-calculator.html">Percentage</a></nav></header>
+<h1>Savings Interest Calculator</h1><p class="lead">See what a deposit grows to, with simple interest or compounding at different intervals.</p><section class="panel" id="save">
+  
+  <label for="s1">Deposit amount</label><input id="s1" type="number" inputmode="decimal" value="100000">
+  <label for="s2">Annual interest rate (%)</label><input id="s2" type="number" inputmode="decimal" value="7">
+  <label for="s3">Term</label>
+  <div class="two"><input id="s3" type="number" inputmode="decimal" value="1"><select id="s4" aria-label="Term unit"><option value="m">Months</option><option value="y" selected>Years</option></select></div>
+  <div class="chips"><button type="button" class="chip" data-i="s3" data-u="s4" data-v="3" data-x="m" data-b="b-save">3 months</button><button type="button" class="chip" data-i="s3" data-u="s4" data-v="6" data-x="m" data-b="b-save">6 months</button><button type="button" class="chip" data-i="s3" data-u="s4" data-v="1" data-x="y" data-b="b-save">1 year</button><button type="button" class="chip" data-i="s3" data-u="s4" data-v="2" data-x="y" data-b="b-save">2 years</button><button type="button" class="chip" data-i="s3" data-u="s4" data-v="3" data-x="y" data-b="b-save">3 years</button><button type="button" class="chip" data-i="s3" data-u="s4" data-v="5" data-x="y" data-b="b-save">5 years</button><button type="button" class="chip" data-i="s3" data-u="s4" data-v="10" data-x="y" data-b="b-save">10 years</button><button type="button" class="chip" data-i="s3" data-u="s4" data-v="20" data-x="y" data-b="b-save">20 years</button></div>
+  <label for="s5">Interest type</label>
+  <select id="s5"><option value="12">Compounded monthly</option><option value="4">Compounded quarterly</option><option value="2">Compounded half-yearly</option><option value="1">Compounded yearly</option><option value="0">Simple interest</option></select>
+  <button class="go" id="b-save">Calculate</button>
+  <div class="res" id="r-save" aria-live="polite"></div>
+</section><article><h2>Formulas</h2>
+<p>Compound interest: <b>A = P x (1 + r/k)^(k x t)</b>, where P is the deposit, r the annual rate, k the number of compounding periods per year and t the time in years.</p>
+<p>Simple interest: <b>A = P x (1 + r x t)</b>.</p>
+<p>The effective yearly rate shows what the stated rate is really worth after compounding.</p>
+<h2>Frequently asked questions</h2>
+<details><summary>Is compound interest better than simple interest?</summary><p>For the same rate and term, compounding gives a higher final amount because interest earns interest.</p></details>
+<details><summary>Does it include tax or bank charges?</summary><p>No. Tax and fees depend on your country and account, so check them with your bank.</p></details>
+<details><summary>Does more frequent compounding matter?</summary><p>Slightly. Monthly compounding gives a little more than yearly at the same rate.</p></details></article>
+<footer>Results are estimates for general information. Check important figures with your bank, doctor or local authority.</footer>
+</div><script src="app.js"></script></body></html>

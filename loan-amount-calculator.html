@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Loan Affordability Calculator: How Much Loan Can I Afford?</title>
+<meta name="description" content="Free loan affordability calculator. Enter the monthly payment you can afford, the interest rate and the term to see the loan amount you can borrow.">
+<link rel="canonical" href="https://neyedinesh-ux.github.io/calculator/loan-amount-calculator.html">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="style.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Will a lender approve this amount?", "acceptedAnswer": {"@type": "Answer", "text": "Not necessarily. Lenders also consider income, existing debts and credit history. Treat the result as a planning figure."}}, {"@type": "Question", "name": "Should I borrow the maximum?", "acceptedAnswer": {"@type": "Answer", "text": "Many people keep a margin so that rising costs or lower income do not make payments hard to meet."}}]}</script>
+</head><body><div class="wrap">
+<header><a class="brand" href="./">Free Calculators</a><nav><a href="./">Home</a><a href="emi-calculator.html">EMI</a><a href="age-calculator.html">Age</a><a href="bmi-calculator.html">BMI</a><a href="land-area-converter.html">Land area</a><a href="loan-amount-calculator.html" aria-current="page">Loan amount</a><a href="savings-interest-calculator.html">Savings</a><a href="percentage-calculator.html">Percentage</a></nav></header>
+<h1>Loan Affordability Calculator</h1><p class="lead">Start from the monthly payment you can afford and find the loan amount that fits it.</p><section class="panel" id="loan">
+  
+  <label for="n1">Monthly payment you can afford</label><input id="n1" type="number" inputmode="decimal" value="20000">
+  <label for="n2">Annual interest rate (%)</label><input id="n2" type="number" inputmode="decimal" value="10">
+  <label for="n3">Term</label>
+  <div class="two"><input id="n3" type="number" inputmode="decimal" value="3"><select id="n4" aria-label="Term unit"><option value="m">Months</option><option value="y" selected>Years</option></select></div>
+  <div class="chips"><button type="button" class="chip" data-i="n3" data-u="n4" data-v="3" data-x="m" data-b="b-loan">3 months</button><button type="button" class="chip" data-i="n3" data-u="n4" data-v="6" data-x="m" data-b="b-loan">6 months</button><button type="button" class="chip" data-i="n3" data-u="n4" data-v="1" data-x="y" data-b="b-loan">1 year</button><button type="button" class="chip" data-i="n3" data-u="n4" data-v="2" data-x="y" data-b="b-loan">2 years</button><button type="button" class="chip" data-i="n3" data-u="n4" data-v="3" data-x="y" data-b="b-loan">3 years</button><button type="button" class="chip" data-i="n3" data-u="n4" data-v="5" data-x="y" data-b="b-loan">5 years</button><button type="button" class="chip" data-i="n3" data-u="n4" data-v="10" data-x="y" data-b="b-loan">10 years</button><button type="button" class="chip" data-i="n3" data-u="n4" data-v="20" data-x="y" data-b="b-loan">20 years</button></div>
+  <button class="go" id="b-loan">Calculate</button>
+  <div class="res" id="r-loan" aria-live="polite"></div>
+</section><article><h2>How it works</h2>
+<p>This is the EMI formula worked backwards. Given a monthly payment M, a monthly rate r and n payments:</p>
+<p><b>Loan = M x (1 - (1 + r)^-n) / r</b></p>
+<p>A longer term allows a bigger loan for the same monthly payment, but you pay more interest in total. The result also shows the total you repay and the interest portion.</p>
+<h2>Frequently asked questions</h2>
+<details><summary>Will a lender approve this amount?</summary><p>Not necessarily. Lenders also consider income, existing debts and credit history. Treat the result as a planning figure.</p></details>
+<details><summary>Should I borrow the maximum?</summary><p>Many people keep a margin so that rising costs or lower income do not make payments hard to meet.</p></details></article>
+<footer>Results are estimates for general information. Check important figures with your bank, doctor or local authority.</footer>
+</div><script src="app.js"></script></body></html>

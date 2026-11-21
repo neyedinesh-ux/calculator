@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Percentage Calculator: Percent of a Number, Percent Change and More</title>
+<meta name="description" content="Free percentage calculator. Find X percent of a number, what percent one number is of another, and the percentage increase or decrease.">
+<link rel="canonical" href="https://neyedinesh-ux.github.io/calculator/percentage-calculator.html">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="style.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Why is a 25% rise followed by a 25% fall not back to the start?", "acceptedAnswer": {"@type": "Answer", "text": "The second change applies to a larger number. A 25% rise on 80 gives 100, and 25% off 100 gives 75."}}, {"@type": "Question", "name": "What is the difference between percent and percentage points?", "acceptedAnswer": {"@type": "Answer", "text": "Going from 10% to 12% is a rise of 2 percentage points, which is a 20% increase in the rate."}}]}</script>
+</head><body><div class="wrap">
+<header><a class="brand" href="./">Free Calculators</a><nav><a href="./">Home</a><a href="emi-calculator.html">EMI</a><a href="age-calculator.html">Age</a><a href="bmi-calculator.html">BMI</a><a href="land-area-converter.html">Land area</a><a href="loan-amount-calculator.html">Loan amount</a><a href="savings-interest-calculator.html">Savings</a><a href="percentage-calculator.html" aria-current="page">Percentage</a></nav></header>
+<h1>Percentage Calculator</h1><p class="lead">Three common percentage calculations, with results that update as you type.</p><section class="panel" id="pct">
+  
+  <h3>What is X% of Y?</h3>
+  <div class="two"><div><label for="p1">X (%)</label><input id="p1" type="number" inputmode="decimal" value="15"></div><div><label for="p2">Y</label><input id="p2" type="number" inputmode="decimal" value="2000"></div></div>
+  <div class="res" id="r-p1" aria-live="polite"></div>
+  <div class="sep"></div>
+  <h3>X is what percent of Y?</h3>
+  <div class="two"><div><label for="p3">X</label><input id="p3" type="number" inputmode="decimal" value="30"></div><div><label for="p4">Y</label><input id="p4" type="number" inputmode="decimal" value="120"></div></div>
+  <div class="res" id="r-p2" aria-live="polite"></div>
+  <div class="sep"></div>
+  <h3>Percentage change</h3>
+  <div class="two"><div><label for="p5">From</label><input id="p5" type="number" inputmode="decimal" value="80"></div><div><label for="p6">To</label><input id="p6" type="number" inputmode="decimal" value="100"></div></div>
+  <div class="res" id="r-p3" aria-live="polite"></div>
+</section><article><h2>Formulas</h2>
+<ul><li><b>X% of Y</b> = X / 100 x Y. Example: 15% of 2,000 is 300.</li><li><b>X is what % of Y</b> = X / Y x 100. Example: 30 is 25% of 120.</li><li><b>Percentage change</b> = (new - old) / old x 100. Example: from 80 to 100 is +25%.</li></ul>
+<h2>Frequently asked questions</h2>
+<details><summary>Why is a 25% rise followed by a 25% fall not back to the start?</summary><p>The second change applies to a larger number. A 25% rise on 80 gives 100, and 25% off 100 gives 75.</p></details>
+<details><summary>What is the difference between percent and percentage points?</summary><p>Going from 10% to 12% is a rise of 2 percentage points, which is a 20% increase in the rate.</p></details></article>
+<footer>Results are estimates for general information. Check important figures with your bank, doctor or local authority.</footer>
+</div><script src="app.js"></script></body></html>

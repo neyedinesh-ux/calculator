@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://neyedinesh-ux.github.io/calculator/sitemap.xml

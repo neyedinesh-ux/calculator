@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BMI Calculator: Body Mass Index and Healthy Weight Range</title>
+<meta name="description" content="Free BMI calculator. Enter weight in kg and height in cm to see your body mass index, category and the normal weight range for your height.">
+<link rel="canonical" href="https://neyedinesh-ux.github.io/calculator/bmi-calculator.html">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="style.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is BMI a diagnosis?", "acceptedAnswer": {"@type": "Answer", "text": "No. It is a screening number. Talk to a doctor before making health decisions."}}, {"@type": "Question", "name": "What is the normal weight range for my height?", "acceptedAnswer": {"@type": "Answer", "text": "The calculator shows the weight range that gives a BMI between 18.5 and 24.9 for the height you enter."}}]}</script>
+</head><body><div class="wrap">
+<header><a class="brand" href="./">Free Calculators</a><nav><a href="./">Home</a><a href="emi-calculator.html">EMI</a><a href="age-calculator.html">Age</a><a href="bmi-calculator.html" aria-current="page">BMI</a><a href="land-area-converter.html">Land area</a><a href="loan-amount-calculator.html">Loan amount</a><a href="savings-interest-calculator.html">Savings</a><a href="percentage-calculator.html">Percentage</a></nav></header>
+<h1>BMI Calculator</h1><p class="lead">Calculate body mass index from weight and height, and see the weight range that counts as normal for your height.</p><section class="panel" id="bmi">
+  
+  <div class="two">
+    <div><label for="m1">Weight (kg)</label><input id="m1" type="number" inputmode="decimal" value="65"></div>
+    <div><label for="m2">Height (cm)</label><input id="m2" type="number" inputmode="decimal" value="165"></div>
+  </div>
+  <button class="go" id="b-bmi">Calculate</button>
+  <div class="res" id="r-bmi" aria-live="polite"></div>
+  <div class="note">A general guide for adults. Consult a doctor before making health decisions.</div>
+</section><article><h2>How BMI is calculated</h2>
+<p><b>BMI = weight (kg) / height (m) squared.</b> For example, 65 kg at 165 cm is 65 / (1.65 x 1.65), about 23.9.</p>
+<table><tr><th>BMI</th><th>Category</th></tr><tr><td>Below 18.5</td><td>Underweight</td></tr><tr><td>18.5 to 24.9</td><td>Normal</td></tr><tr><td>25 to 29.9</td><td>Overweight</td></tr><tr><td>30 and above</td><td>Obese</td></tr></table>
+<p>These are the general adult categories. Some guidelines for South and East Asian adults use lower cut-off points, so ask a doctor which applies to you.</p>
+<h2>Limits of BMI</h2>
+<p>BMI does not measure body fat. It can read high for muscular people and low for people who have lost muscle. It is not meant for children, teenagers or pregnant women.</p>
+<h2>Frequently asked questions</h2>
+<details><summary>Is BMI a diagnosis?</summary><p>No. It is a screening number. Talk to a doctor before making health decisions.</p></details>
+<details><summary>What is the normal weight range for my height?</summary><p>The calculator shows the weight range that gives a BMI between 18.5 and 24.9 for the height you enter.</p></details></article>
+<footer>Results are estimates for general information. Check important figures with your bank, doctor or local authority.</footer>
+</div><script src="app.js"></script></body></html>

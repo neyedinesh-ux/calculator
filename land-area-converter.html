@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Land Area Converter: Katha, Decimal, Bigha, Acre, Square Feet</title>
+<meta name="description" content="Free land area converter for katha, decimal (shatak), bigha, acre, square feet and square metres. Convert any unit to all the others at once.">
+<link rel="canonical" href="https://neyedinesh-ux.github.io/calculator/land-area-converter.html">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="style.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How many square feet are in one katha?", "acceptedAnswer": {"@type": "Answer", "text": "With the value used here, 720 square feet."}}, {"@type": "Question", "name": "How many decimals make one acre?", "acceptedAnswer": {"@type": "Answer", "text": "100 decimals make one acre."}}, {"@type": "Question", "name": "Why does my deed show a different size?", "acceptedAnswer": {"@type": "Answer", "text": "Local custom and older survey systems vary. Use the size stated in your documents for legal purposes."}}]}</script>
+</head><body><div class="wrap">
+<header><a class="brand" href="./">Free Calculators</a><nav><a href="./">Home</a><a href="emi-calculator.html">EMI</a><a href="age-calculator.html">Age</a><a href="bmi-calculator.html">BMI</a><a href="land-area-converter.html" aria-current="page">Land area</a><a href="loan-amount-calculator.html">Loan amount</a><a href="savings-interest-calculator.html">Savings</a><a href="percentage-calculator.html">Percentage</a></nav></header>
+<h1>Land Area Converter</h1><p class="lead">Convert katha, decimal, bigha, acre, square feet and square metres in one step.</p><section class="panel" id="land">
+  
+  <div class="two">
+    <div><label for="l1">Amount</label><input id="l1" type="number" inputmode="decimal" value="1"></div>
+    <div><label for="l2">Unit</label>
+      <select id="l2">
+        <option value="720">Katha</option><option value="435.6">Decimal (shatak)</option><option value="14400">Bigha</option>
+        <option value="43560">Acre</option><option value="1">Square feet</option><option value="10.7639">Square metres</option>
+      </select></div>
+  </div>
+  <button class="go" id="b-land">Convert</button>
+  <div class="res" id="r-land" aria-live="polite"></div>
+  <div class="note">Assumes 1 katha = 720 sq ft, 1 bigha = 20 katha, 1 decimal = 435.6 sq ft. Katha and bigha sizes vary by region, so check the size stated in your land deed.</div>
+</section><article><h2>Conversion values used</h2>
+<table><tr><th>Unit</th><th>In square feet</th></tr><tr><td>1 katha</td><td>720</td></tr><tr><td>1 decimal (shatak)</td><td>435.6</td></tr><tr><td>1 bigha</td><td>14,400 (20 katha)</td></tr><tr><td>1 acre</td><td>43,560 (100 decimals)</td></tr><tr><td>1 square metre</td><td>10.7639</td></tr></table>
+<h2>Check the local size</h2>
+<p>The katha and bigha are not the same everywhere. The values above are commonly used in Bangladesh, but the size differs in some regions and countries. Always confirm the unit size written in your land deed or with the local land office before buying, selling or measuring.</p>
+<h2>Frequently asked questions</h2>
+<details><summary>How many square feet are in one katha?</summary><p>With the value used here, 720 square feet.</p></details>
+<details><summary>How many decimals make one acre?</summary><p>100 decimals make one acre.</p></details>
+<details><summary>Why does my deed show a different size?</summary><p>Local custom and older survey systems vary. Use the size stated in your documents for legal purposes.</p></details></article>
+<footer>Results are estimates for general information. Check important figures with your bank, doctor or local authority.</footer>
+</div><script src="app.js"></script></body></html>
